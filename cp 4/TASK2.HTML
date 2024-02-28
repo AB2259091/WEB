@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+</head>
+
+<body>
+    <style>
+        body {
+            background-color: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #d6cdcd;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 20px;
+            margin-bottom: 12px;
+            box-sizing: border-box;
+        }
+    </style>
+
+
+    <form id="signInForm">
+        <label for="signInUsername">Username:</label>
+        <input type="text" id="signInUsername" name="signInUsername" required>
+        <label for="signInPassword">Password:</label>
+        <input type="password" id="signInPassword" name="signInPassword" required>
+        <button type="button" onclick="validateSignIn()">Sign In</button>
+    </form>
+    <form id="signUpForm">
+        <label for="signUpUsername">Username:</label>
+        <input type="text" id="signUpUsername" name="signUpUsername" required>
+        <label for="signUpPassword">Password:</label>
+        <input type="password" id="signUpPassword" name="signUpPassword" required>
+        <label for="confirmPassword">Confirm Password:</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <button type="button" onclick="validateSignUp()">Sign Up</button>
+    </form>
+
+    <script>
+        function validateSignIn() {
+            var username = document.getElementById('signInUsername').value;
+            var password = document.getElementById('signInPassword').value;
+            if (!username || !password) {
+                alert('Please fill in all fields.');
+                return;
+            }
+            alert("SignUp successful!!");
+        }
+        function validateSignUp() {
+            var username = document.getElementById('signUpUsername').value;
+            var password = document.getElementById('signUpPassword').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+            var email = document.getElementById('email').value;
+            var passwordRegex = /^(?=.*[!@#$%^&*(),.?":{}|<>])(?=.*\d).{8,}$/;
+
+            if (!username || !password || !confirmPassword || !email) {
+                alert('Please fill in all fields.');
+                return;
+            }
+            if (password !== confirmPassword) {
+                alert('Password do not match.');
+                return;
+            }
+            if (!passwordRegex.test(password)) {
+                alert('Password MUST contain special and numeric characters, and atleast 8 characters long!!');
+                return;
+            }
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Invalid email format!!');
+                return;
+            }
+            alert('Signup Successful!!');
+        }
+    </script>
+
+</body>
+}
+
+</html>
