@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <div class="btn-group">
+        <button
+          type="button"
+          class="btn btn-primary"
+          onclick="displayMessage('Button 1 clicked')"
+        >
+          Basic
+        </button>
+        <button
+          type="button"
+          class="btn btn-secondary"
+          onclick="displayMessage('Button 2 clicked')"
+        >
+          Default
+        </button>
+        <button
+          type="button"
+          class="btn btn-success"
+          onclick="displayMessage('Button 3 clicked')"
+        >
+          Primary
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          onclick="displayMessage('Button 4 clicked')"
+        >
+          Success
+        </button>
+        <button
+          type="button"
+          class="btn btn-warning"
+          onclick="displayMessage('Button 5 clicked')"
+        >
+          Info
+        </button>
+        <button
+          type="button"
+          class="btn btn-info"
+          onclick="displayMessage('Button 6 clicked')"
+        >
+          Warning
+        </button>
+        <button
+          type="button"
+          class="btn btn-light"
+          onclick="displayMessage('Button 7 clicked')"
+        >
+          Danger
+        </button>
+        <button
+          type="button"
+          class="btn btn-white text-dark"
+          onclick="displayMessage('Button 8 clicked')"
+        >
+          Link
+        </button>
+      </div>
+    </div>
+    <script>
+      function displayMessage(message) {
+        alert(message);
+      }
+    </script>
+  </body>
+</html>

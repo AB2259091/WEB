@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Month Days Counter</h2>
+    <script>
+      var monthName = prompt(
+        "Enter the month name (e.g., Jan, Feb)"
+      ).toLowerCase();
+      var daysInMonth = {
+        jan: 31,
+        feb: 28,
+        mar: 31,
+        apr: 30,
+        may: 31,
+        jun: 30,
+        jul: 31,
+        aug: 31,
+        sep: 30,
+        oct: 31,
+        nov: 30,
+        dec: 31,
+      };
+      if (daysInMonth[monthName]) {
+        document.body.innerHTML += `<p>Total days : <span style="color:
+red;">${monthName.toUpperCase()}</span>: ${daysInMonth[monthName]}</p>`;
+      } else {
+        alert(
+          "Invalid month name. Please enter valid month abbreviations (e.g Jan, Feb)."
+        );
+      }
+    </script>
+  </body>
+</html>
