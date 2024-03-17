@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clock</title>
+  <style>
+    body {
+      font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .clock {
+      font-size: 3em;
+      color: #0092cc;
+      border: 5px solid #000000;
+      padding: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="clock">
+    <span id="hours">00</span> :
+    <span id="minutes">00</span> :
+    <span id="seconds">00</span>
+    <span id="period">AM</span>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      function updateClock() {
+        var now = new Date();
+        var hours = now.getHours();
+        var period = hours >= 12 ? 'PM' : 'AM';
+        hours = (hours % 12) || 12;
+        var minutes = now.getMinutes().toString().padStart(2, '0');
+        var seconds = now.getSeconds().toString().padStart(2, '0');
+
+        $('#hours').text(hours);
+        $('#minutes').text(minutes);
+        $('#seconds').text(seconds);
+        $('#period').text(period);
+      }
+
+      updateClock();
+      setInterval(updateClock, 1000);
+    });
+  </script>
+</body>
+
+</html>

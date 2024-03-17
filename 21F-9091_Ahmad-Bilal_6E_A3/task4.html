@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock, Paper, Scissors</title>
+  <style>
+    body {
+      font-family:'Times New Roman', Times, serif;
+      background-color: #f0f0f0;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      margin-top: 20px;
+      color: #222222;
+    }
+
+    .choices {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .choice {
+      margin: 0 10px;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .score {
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #555;
+    }
+
+    .hand {
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+      border-radius: 10px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      font-size: 1rem;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Rock, Paper, Scissors</h1>
+
+  <input type="text" id="nameInput" placeholder="Enter your name" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">
+
+  <div class="choices">
+    <div class="choice" data-choice="rock"><img class="hand" src="rock.png" alt="Rock"></div>
+    <div class="choice" data-choice="paper"><img class="hand" src="paper.png" alt="Paper"></div>
+    <div class="choice" data-choice="scissors"><img class="hand" src="scissors.png" alt="Scissors"></div>
+  </div>
+
+  <div class="result"></div>
+  <div class="score">Score: <span id="score" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">0</span></div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      var choices = ['rock', 'paper', 'scissors'];
+      var score = 0;
+      var trials = 0;
+      var wins = 0;
+      var userName = '';
+
+      $('#nameInput').change(function () {
+        userName = $(this).val();
+      });
+
+      $('.choice').click(function () {
+        var userChoice = $(this).data('choice');
+        var computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+        var result;
+        if (userChoice === computerChoice) {
+          result = "It's a tie!";
+        } else if ((userChoice === 'rock' && computerChoice === 'scissors') ||
+          (userChoice === 'paper' && computerChoice === 'rock') ||
+          (userChoice === 'scissors' && computerChoice === 'paper')) {
+          result = userName + " wins!";
+          score++;
+          wins++;
+        } else {
+          result = "Computer wins!";
+          score--;
+        }
+
+        trials++;
+        $('.result').text(result);
+        $('#score').text(score);
+
+        if (trials >= 5) {
+          if (userName !== '' && wins >= 3) {
+            $('.result').text(userName + " wins!");
+          } else {
+            $('.result').text("Game over!");
+          }
+          $('.choices').hide();
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>
